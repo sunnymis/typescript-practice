@@ -1,0 +1,8 @@
+String/Numbers
+var age: number = 5
+var symbol: string = '#'
+
+String Literal Type
+var symbol: '#' = '#' // Can only be the value #. But use const instead
+
+Union Types
