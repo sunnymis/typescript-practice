@@ -6,3 +6,26 @@ String Literal Type
 var symbol: '#' = '#' // Can only be the value #. But use const instead
 
 Union Types
+const symbol: '#' | '$' = '#'
+
+
+Alias Types
+type ValidSymbol = '#' | '$'
+
+Function Type Annotations
+function generateRandomId(symbol: ValidSymbol, length: number): string {}
+
+Void Functions
+function something() {
+	alert('Hello');
+}
+This function doesn't return anything, so it is implicitly return type void
+
+Never Functions
+function something(): never {
+	throw new Error('Fail'); 
+}
+function something2(): never {
+	while(true) {}
+}
+No way to progress to the end of the function. So it never returns
