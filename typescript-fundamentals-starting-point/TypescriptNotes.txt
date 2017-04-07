@@ -71,3 +71,69 @@ class App {
 }
 Unlike ES5 Classes, properties are not declared in the constructor. You have to set properties 
 on the class itself then access it throughout your class using this. 
+
+For base classes, use the extends keyword. 
+
+class App extends Component() {
+
+}
+
+App inherits all the functions from Component, even constructor. So if App is created and 
+doesn't have it's own constructor function, it will call the base class (Component) constructor
+
+TypeScript classes are both interfaces and class implementations. You can have an interface look
+like this:
+class Component {
+	onInit() {}
+}
+class A implements Component {
+	onInit() {...}
+}
+A has to implement the onInit function if it implements the Component class. 
+During compile time the Component class is turned into a JavaScript function. This may hurt
+performance because we are adding extra code into the compiled file. Component doesn't do 
+anything other than have a structure we want. So like earlier, we can just use interfaces:
+interface Component {
+	onInit()
+}
+This time we exclude the curly braces because we are not providing any implmentation and
+on the plus side, during compile time this whole interface goes away. TypeScript only uses
+it for type checking
+
+Access Modifiers
+public - accessible just about anywhere
+private - only accessible in the class
+protected - only accessible in current class and all children of the class
+readonly - makes the property immutable
+private a : int = 5
+public static id : 'app'
+protected readonly name = 'sunny'
+
+Class Decorators
+@Component({ id: 'app' })
+class App {..}
+Need to include in tsconfig: 
+experimentalDecorators: true
+You then need to define the decorator as:
+function Component(options) {
+	return (target) => target.id = options.id
+}
+Here, the decorator Component takes in an object, 
+and when returning, takes the id it was passed in and adds it to the target class (App)
+This also works on methods as well
+
+Property and Parameter Decorators
+class App {
+	@prop
+	someStr : string
+}
+function prop(x, name) {
+	// x is the class prototype you are in
+	// name is the name of the property that has the prop decorator
+}
+function param(x,name,index) {
+	// For parameter Decorators
+	// where index is the index of the parameter in the list of params
+}
+If the property/method is an instance property, decorators receive the prototype of the function
+in the first argument. If it is static, it receives the constructor function as the first arg (x)

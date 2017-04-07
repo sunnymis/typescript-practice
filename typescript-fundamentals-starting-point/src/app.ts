@@ -1,8 +1,18 @@
-import { ValidSymbol, GenerateConfig, generateRandomId } from './utils';
+import { ValidSymbol, GenerateConfig, generateRandomId, Component, enumerable } from './utils';
 
 function identity<T>(arg: T): T {
 	return arg;
 }
+
+// class Component {
+// 	constructor() {
+// 		this.log();
+// 	}
+
+// 	log() {
+// 		console.log('Component Created');
+// 	}
+// }
 
 // Instance Properties
 // class App {
@@ -12,10 +22,17 @@ function identity<T>(arg: T): T {
 // 	}
 // }
 
-// Static Properties
-class App {
-	static id = 'app';
 
+
+
+// Static Properties
+//class App extends Component {
+@Component({
+	id: 'app'
+})
+class App {
+	// static id = 'app';
+	@enumerable(true)
 	onInit(el: HTMLElement | null) {
 		setInterval(function () {
 			if (el) {
@@ -40,6 +57,8 @@ function something(): never {
 	throw new Error('error');
 }
 
-
+for (let key in App.prototype) {
+	console.log(key);
+}
 
 main(App);

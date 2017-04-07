@@ -16,3 +16,17 @@ export function generateRandomId(optionsOrSymbol: ValidSymbol | GenerateConfig):
     return optionsOrSymbol.symbol +
         Math.random().toString(36).substr(2, optionsOrSymbol.length)
 }
+
+
+export function Component(options: { id: string }) {
+    console.log(options);
+    return (target) => {
+        target.id = options.id
+    }
+}
+
+export function enumerable(isEnumerable: boolean) {
+    return (target, propertyKey, propertyDescriptor: PropertyDescriptor) => {
+        propertyDescriptor.enumerable = isEnumerable
+    }
+}
