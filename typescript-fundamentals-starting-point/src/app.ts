@@ -1,5 +1,5 @@
 import { ValidSymbol, GenerateConfig, generateRandomId, Component, enumerable } from './utils';
-
+import { random } from 'lodash';
 function identity<T>(arg: T): T {
 	return arg;
 }
@@ -38,7 +38,7 @@ class App {
 			if (el) {
 				el.innerHTML = generateRandomId({
 					symbol: '$',
-					length: 7
+					length: random(2, 10)
 				});
 			}
 		}, 1000)

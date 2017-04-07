@@ -137,3 +137,20 @@ function param(x,name,index) {
 }
 If the property/method is an instance property, decorators receive the prototype of the function
 in the first argument. If it is static, it receives the constructor function as the first arg (x)
+
+Typings File typings.d.ts
+The typings file is used when you are importing a 3rd party library
+that is written in JavaScript and your compiler has no information
+about the types of the functions and properties of the library. 
+To let the compiler know about third party types, you have to declare
+the modules in the typings file and declare their exports.
+Example:
+declare module 'lodash' {
+	export function random(min: number, max: number):number
+}
+
+This may be cumbersome and hard to maintain so the community built
+DefinitelyTyped and @types npm library
+https://github.com/DefinitelyTyped/DefinitelyTyped
+https://www.npmjs.com/~types
+
