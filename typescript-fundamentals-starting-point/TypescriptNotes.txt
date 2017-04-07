@@ -61,3 +61,13 @@ function identity<T>(arg: T): T {
 	return arg; 
 }
 We are saying that whatever the type I pass in, I want to return a value with the same type 
+
+Classes
+class App {
+	id : string
+	constructor() {
+		this.id = ".."
+	}
+}
+Unlike ES5 Classes, properties are not declared in the constructor. You have to set properties 
+on the class itself then access it throughout your class using this. 
