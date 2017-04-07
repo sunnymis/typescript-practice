@@ -1,3 +1,6 @@
+Watcher: 
+tsc -w
+
 String/Numbers
 var age: number = 5
 var symbol: string = '#'
@@ -29,3 +32,32 @@ function something2(): never {
 	while(true) {}
 }
 No way to progress to the end of the function. So it never returns
+
+Optional Paramaters
+function someFn(a: int, length?: number)
+The question mark denotes optional parameter
+Or es6 default params:
+function someFn(a: int, length: number = 7)
+
+Interfaces:
+interface GenerateConfig { 
+	symbol: ValidSymbol, 
+	length: number 
+}
+
+Function Overload:
+function generateRandomId(options: GenerateConfig): string	
+function generateRandomId(symbol: ValidSymbol, length: number): string
+function generateRandomId(optionsOrSymbol: ValidSymbol | GenerateConfig): string {
+	if (typeof optionsOrSymbol === "string") {
+		return optionsOrSymbol + Math.random().toString(36).substr(2, length)	
+	}
+    return optionsOrSymbol.symbol + 
+    	Math.random().toString(36).substr(2, optionsOrSymbol.length)
+}
+
+Generics
+function identity<T>(arg: T): T {
+	return arg; 
+}
+We are saying that whatever the type I pass in, I want to return a value with the same type 

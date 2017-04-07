@@ -6,6 +6,7 @@
         "sourceMap": false,
         "allowJs": true,
         "outDir": "dist",
-        "noEmitOnError": true
+        "noEmitOnError": true,
+        "strictNullChecks": true
     }
 }
